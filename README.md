@@ -1,2 +1,71 @@
 # BT-BST
-Binary Tree And Binary Search Tree 
+Binary Tree 
+#include <iostream>
+#include <conio.h>
+#include <stdio.h>
+using namespace std;
+
+struct node {
+	char data;
+	node *left;
+	node *right;
+};
+node *root=NULL;
+
+void tambahnode (node* *root, char isi) {
+	if(*root == NULL) {
+		node *baru;
+		baru = new node;
+		baru->data = isi;
+		baru->left = NULL;
+		baru->right= NULL;
+		*root=baru;
+	}
+}
+
+void preorder (node *root) {
+	if(root != NULL) {
+		cout<<root->data<<' ';
+		preorder(root->left);
+		preorder(root->right);
+	}
+}
+
+
+void inorder(node *root) {
+	if(root !=NULL) {
+		inorder(root->left);
+		cout<<root->data<<' ';
+		inorder(root->right);
+	}
+}
+
+void postorder(node *root) {
+	if(root != NULL) {
+		postorder(root->left);
+		postorder(root->right);
+		cout<<root->data<<' ';
+
+	}
+}
+
+main() {
+	char kata;
+	tambahnode(&root,kata='B');
+	tambahnode(&root->left,kata='U');
+	tambahnode(&root->left->left,kata='D');
+	tambahnode(&root->left->left->left,kata='I');
+	tambahnode(&root->right,kata='M');
+	tambahnode(&root->right->right,kata='A');
+	tambahnode(&root->right->right->right,kata='N');
+	cout<<"Tampilan Secara Preorder : ";
+	preorder(root);
+	cout<<endl;
+	cout<<"Tampilan Secara Inorder : ";
+	inorder(root);
+	cout<<endl;
+	cout<<"Tampilan Secara Postorder : ";
+	postorder(root);
+	cout<<endl;
+	getch();
+}
